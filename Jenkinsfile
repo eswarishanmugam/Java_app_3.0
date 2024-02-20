@@ -79,7 +79,7 @@ pipeline{
             steps{
                 script{
 
-                    def curlCommand = "curl -X PUT -u admin -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://15.206.90.54:8082/artifactory/example-repo-local/"
+                    def curlCommand = "curl -X PUT -u admin -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://15.206.90.54:8082/artifactory/example-repo/"
 
                     // Execute the curl command
                     def curlOutput = sh(script: curlCommand, returnStdout: true).trim()
