@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+-@Library('my-shared-library') _
 
 pipeline{
 
@@ -20,7 +20,7 @@ pipeline{
             steps{
             gitCheckout(
                 branch: "main",
-                url: "https://github.com/praveen1994dec/Java_app_3.0.git"
+                url: "https://github.com/eswarishanmugam/Java_app_3.0.git"
             )
             }
         }
@@ -80,6 +80,12 @@ pipeline{
                 script{
 
                     def curlCommand = "curl -X PUT -u admin -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://15.206.90.54:8082/artifactory/example-repo-local/"
+
+                    // Execute the curl command
+                    def curlOutput = sh(script: curlCommand, returnStdout: true).trim()
+                    
+                    // Print the output
+                    println "Curl Output: ${curlOutput}"
                 }
             }
         }
