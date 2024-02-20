@@ -73,6 +73,17 @@ pipeline{
                }
             }
         }
+
+        stage('Deploy to Artifactory'){
+         when { expression {  params.action == 'create' } }
+            steps{
+                script{
+
+                    def curlCommand = "curl -X PUT -u admin -T kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar http://15.206.90.54:8082/artifactory/example-repo-local/"
+                }
+            }
+        }
+        
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
